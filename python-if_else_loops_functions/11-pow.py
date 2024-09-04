@@ -1,7 +1,7 @@
 #!/usr/bin/python3
 def pow(a, b):
     if a == 0 and b < 0:
-        raise ValueError("0 can't be raised to a negative number")
+        return 0
     result = 1
     if b < 0:
         a = 1 / a
