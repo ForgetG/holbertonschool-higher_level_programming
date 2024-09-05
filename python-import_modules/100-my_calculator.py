@@ -5,13 +5,13 @@ if __name__ == "__main__":
 
     argv = sys.argv[1:]
     argc = len(argv)
-    if argc != 3:
+    if argc != 4:
         print("Usage: ./100-my_calculator.py <a> <operator> <b>")
         exit(1)
     else:
-        a = int(argv[0])
-        operator = argv[1]
-        b = int(argv[2])
+        a = int(argv[1])
+        operator = argv[2]
+        b = int(argv[3])
         if operator == '+':
             result = add(a, b)
         elif operator == '-':
