@@ -1,4 +1,11 @@
 #!/usr/bin/python3
+"""
+Function add_integer takes 2 arguments, a and b.
+
+Checks if the type of number is int or float.
+"""
+
+
 def add_integer(a, b=98):
     """
     Adds two integers or floats after casting them to integers.
