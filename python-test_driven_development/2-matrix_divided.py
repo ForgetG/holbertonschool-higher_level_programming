@@ -1,14 +1,24 @@
 #!/usr/bin/python3
+"""
+Function that divides all elements of a matrix
+Checks for TypeError and ZeroDivisonError.
+"""
+
+
 def matrix_divided(matrix, div):
-    """ 
-    Function that divides all elements of a matrix rounded to 2 decimal places. 
+    """
+    Function that divides all elements of a matrix rounded to 2 decimal places.
 
     Args:
-        matrix (list of lists of integers or floats): List of lists containing integers or floats.
-        div (integer or float): Must be a number different from 0.
+        matrix (list of lists of integers or floats):
+          List of lists containing integers or floats.
+        div (integer or float):
+          Must be a number different from 0.
 
     Returns:
-        New matrix (new_matrix) with all elements of the original matrix divided by div rounded to 2 decimal places.
+        New matrix (new_matrix) with all elements
+          of the original matrix divided
+            by div rounded to 2 decimal places.
 
     Raises:
         TypeError:
@@ -21,9 +31,13 @@ def matrix_divided(matrix, div):
     if not isinstance(div, (int, float)):
         raise TypeError("div must be a number")
     if not all(isinstance(row, list) for row in matrix):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
-    if not all(all(isinstance(element, (int, float)) for element in row) for row in matrix):
-        raise TypeError("matrix must be a matrix (list of lists) of integers/floats")
+        raise TypeError("matrix must be a \
+                        matrix (list of lists) of integers/floats")
+    for row in matrix:
+        for element in row:
+            if type(element) not in [int, float]:
+                raise TypeError("matrix must be a matrix \
+                                (list of lists) of integers/floats")
     if div == 0:
         raise ZeroDivisionError("division by zero")
 
