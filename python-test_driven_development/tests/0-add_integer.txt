@@ -1,6 +1,8 @@
-====================================
 Test for '''0-add_integer''' module
 ====================================
+
+Use of ''0-add_integer''
+========================
 
 Import
 ======
@@ -8,6 +10,7 @@ Import
     >>> add_integer = __import__('0-add_integer').add_integer
 
 Correct cases:
+==============
 
     >>> add_integer(1, 2)
     3
@@ -19,6 +22,7 @@ Correct cases:
     98
 
 Error cases:
+============
 
     >>> try:
     ...     add_integer(4, "School")
@@ -26,9 +30,31 @@ Error cases:
     ...     print(e)
     ...
     b must be an integer
+
     >>> try:
     ...     add_integer(None)
     ... except Exception as e:
     ...     print(e)
     ...
     a must be an integer
+
+    >>>try:
+    ...     add_integer(1e308, 1e308)
+    ...     except Exception as e:
+    ...     print(e)
+    ...
+    OverflowError: (34, 'Numerical result out of range')
+
+    >>>try:
+    ...     add_integer(1, 2, 3)
+    ...     except Exception as e:
+    ...     print(e)
+    ...
+    TypeError: add_integer() takes 2 positional arguments but 3 were given
+
+    >>>try:
+    ...     add_integer('a' * 10000, 2)
+    ...     except Exception as e:
+    ...     print(e)
+    ...
+    ValueError: a is too long.
