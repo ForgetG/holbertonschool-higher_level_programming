@@ -8,13 +8,10 @@ def add_integer(a, b=98):
         b (int, optional): The second number. Defaults to 98.
 
     Return:
-        int: The addition of a + b.
+        The addition of a + b.
 
     Raises:
         TypeError: If a or b are not integers or floats.
-        OverflowError: If a or b are too large to be converted to an integer.
-        ValueError: If the string representation of a or b is too long.
-        TypeError: If the wrong number of arguments are passed.
     """
     if not isinstance(a, (int, float)):
         raise TypeError("a must be an integer")
