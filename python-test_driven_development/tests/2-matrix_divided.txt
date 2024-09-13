@@ -38,6 +38,9 @@ Correct cases:
     >>> matrix_divided(matrix, 2.5)
     [[0.4, 0.8, 1.2], [1.6, 2.0, 2.4]]
 
+    >>> matrix_divided(matrix, float('inf'))
+    [[0.0, 0.0, 0.0], [0.0, 0.0, 0.0]]
+
 Error Cases:
 ============
 
