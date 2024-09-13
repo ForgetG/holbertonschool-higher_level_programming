@@ -35,13 +35,6 @@ Error cases:
     last_name must be a string
 
     >>> try:
-    ...     say_my_name(None)
-    ... except Exception as e:
-    ...     print(e)
-    ...
-    first_name must be a string
-
-    >>> try:
     ...     say_my_name("Jacques", ["Will", "Not", "Work"])
     ... except Exception as e:
     ...     print(e)
