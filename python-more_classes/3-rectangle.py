@@ -72,12 +72,14 @@ class Rectangle:
         else:
             return (self.__height * 2 + self.__width * 2)
 
-    def my_print(self):
+    def __str__(self):
         '''
         Public instance method that prints the Rectangle with #
         '''
+        rectangle = ""
         if self.__height == 0 or self.__width == 0:
-            print("")
+            return rectangle
         else:
             for _ in range(self.height):
-                print("#" * self.width)
+                rectangle += ("#" * self.width) + "\n"
+        return rectangle
