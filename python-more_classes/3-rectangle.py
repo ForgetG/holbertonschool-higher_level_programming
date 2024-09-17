@@ -74,7 +74,7 @@ class Rectangle:
 
     def __str__(self):
         '''
-        Public instance method that prints the Rectangle with #
+        Public instance method that returns the Rectangle with #
         '''
         rectangle = ""
         if self.__height == 0 or self.__width == 0:
@@ -82,4 +82,4 @@ class Rectangle:
         else:
             for _ in range(self.height):
                 rectangle += ("#" * self.width) + "\n"
-        return rectangle
+        return rectangle[:-1]
