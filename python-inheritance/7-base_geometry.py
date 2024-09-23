@@ -9,7 +9,8 @@ class BaseGeometry():
         '''
         Public instance method that raises an Excepction with message
         '''
-        raise Exception("area() is not implemented")
+        if not isinstance(self, float):
+            raise Exception("area() is not implemented")
 
     def integer_validator(self, name, value):
         '''
