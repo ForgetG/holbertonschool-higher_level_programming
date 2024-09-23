@@ -18,8 +18,6 @@ Correct Cases:
     >>> bg = BaseGeometry()
     >>> bg.integer_validator(None, 5)
 
-    >>> bg = BaseGeometry()
-    >>> bg.integer_validator("abc", True)
 
 Error cases:
 
@@ -91,6 +89,12 @@ Error cases:
 
     >>> bg = BaseGeometry()
     >>> bg.integer_validator("abc", {3, 4})
+    Traceback (most recent call last):
+    ...
+    TypeError: abc must be an integer
+
+    >>> bg = BaseGeometry()
+    >>> bg.integer_validator("abc", True)
     Traceback (most recent call last):
     ...
     TypeError: abc must be an integer
