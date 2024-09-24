@@ -22,31 +22,35 @@ class Circle(Shape):
     '''Subclass Circle inherits from Shape'''
     def __init__(self, radius):
         '''Instantiation of Circle'''
-        self.__radius = radius
+        self.radius = radius
 
     def area(self):
-        '''private instance method area of Circle'''
-        return math.pi * self.__radius ** 2
+        '''Public instance method area of Circle'''
+        if self.radius < 0:
+            return 0
+        return math.pi * self.radius ** 2
 
     def perimeter(self):
-        '''Private instance method perimeter of Circle'''
-        return 2 * math.pi * self.__radius
+        '''Public instance method perimeter of Circle'''
+        if self.radius < 0:
+            return 0
+        return 2 * math.pi * self.radius
 
 
 class Rectangle(Shape):
     '''Subclass Rectangle inherits from Shape'''
     def __init__(self, width, height):
         '''Instantiation of Rectangle'''
-        self.__width = width
-        self.__height = height
+        self.width = width
+        self.height = height
 
     def area(self):
-        '''Private instance method area of Rectangle'''
-        return self.__width * self.__height
+        '''Public instance method area of Rectangle'''
+        return self.width * self.height
 
     def perimeter(self):
-        '''Private instance method perimeter of Rectangle'''
-        return 2 * (self.__width + self.__height)
+        '''Public instance method perimeter of Rectangle'''
+        return 2 * (self.width + self.height)
 
 
 def shape_info(shape):
