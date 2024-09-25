@@ -22,7 +22,8 @@ class Circle(Shape):
     '''Subclass Circle inherits from Shape'''
     def __init__(self, radius):
         '''Instantiation of Circle'''
-        self.radius = radius
+        self.radius = abs(radius)
+        
 
     def area(self):
         '''Public instance method area of Circle'''
