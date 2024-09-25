@@ -26,8 +26,6 @@ class Circle(Shape):
 
     def area(self):
         '''Public instance method area of Circle'''
-        if self.radius < 0:
-            return 0
         return math.pi * self.radius ** 2
 
     def perimeter(self):
