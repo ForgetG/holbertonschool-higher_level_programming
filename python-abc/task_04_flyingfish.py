@@ -26,13 +26,13 @@ class Bird:
 
 class FlyingFish(Fish, Bird):
     '''Subclass FlyingFish inherits from Fish and Bird'''
+    def swim(self):
+        '''Action (swim) of the FlyingFish'''
+        print("The flying fish is swimming!")
+
     def fly(self):
         '''Action (fly) of the FlyingFish'''
         print("The flying fish is soaring!")
-
-    def swim(self):
-        '''Action (swim) of the FlyingFish'''
-        print("the flying fish is swimming!")
 
     def habitat(self):
         '''Habitat of the FlyingFish'''
