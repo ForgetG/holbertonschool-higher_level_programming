@@ -30,8 +30,6 @@ class Circle(Shape):
 
     def perimeter(self):
         '''Public instance method perimeter of Circle'''
-        if self.radius < 0:
-            return 0
         return 2 * math.pi * self.radius
 
 
