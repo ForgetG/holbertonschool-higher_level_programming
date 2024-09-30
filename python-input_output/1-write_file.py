@@ -13,5 +13,5 @@ def write_file(filename="", text=""):
 
     Return: Number of character written
     '''
-    with open(filename, encoding="utf-8", mode="a") as f:
+    with open(filename, encoding="utf-8", mode="w") as f:
         return f.write(text)
