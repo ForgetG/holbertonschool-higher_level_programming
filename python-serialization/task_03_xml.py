@@ -15,8 +15,9 @@ def serialize_to_xml(dictionary, filename):
     for key, value in dictionary.items():
         child = ET.SubElement(root, key)
         child.text = str(value)
+        child.set("type", type(value).__name__)
         tree = ET.ElementTree(root)
-        tree.write(filename)
+        tree.write(filename, encoding="utf-8")
 
 
 def deserialize_from_xml(filename):
@@ -33,5 +34,11 @@ def deserialize_from_xml(filename):
     root = tree.getroot()
     dictionnary = {}
     for child in root:
-        dictionnary[child.tag] = child.text
+        value_type = child.get("type")
+        if value_type == "int":
+            dictionnary[child.tag] = int(child.text)
+        elif value_type == "float":
+            dictionnary[child.tag] = float(child.text)
+        else:
+            dictionnary[child.tag] = child.text
     return dictionnary
