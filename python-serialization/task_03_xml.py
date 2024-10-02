@@ -11,13 +11,13 @@ def serialize_to_xml(dictionary, filename):
         dictionary (dict): The dictionary to serialize.
         filename (str): The name of the fike to save the XML data to.
     """
-    root = ET.Element("data")
+    root = ET.Element('data')
     for key, value in dictionary.items():
         child = ET.SubElement(root, key)
         child.text = str(value)
-        child.set("type", type(value).__name__)
+        child.set('type', type(value).__name__)
         tree = ET.ElementTree(root)
-        tree.write(filename, encoding="utf-8", xml_declaration=True)
+        tree.write(filename, encoding='utf-8', xml_declaration=True)
 
 
 def deserialize_from_xml(filename):
@@ -34,10 +34,10 @@ def deserialize_from_xml(filename):
     root = tree.getroot()
     dictionnary = {}
     for child in root:
-        value_type = child.get("type")
-        if value_type == "int":
+        value_type = child.get('type')
+        if value_type == 'int':
             dictionnary[child.tag] = int(child.text)
-        elif value_type == "float":
+        elif value_type == 'float':
             dictionnary[child.tag] = float(child.text)
         else:
             dictionnary[child.tag] = child.text
