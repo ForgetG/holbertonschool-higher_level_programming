@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Module task_03_http_server.py"""
 from http.server import BaseHTTPRequestHandler, HTTPServer
-import socketserver
 import json
 
 PORT = 8000
