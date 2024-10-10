@@ -1,7 +1,6 @@
 #!/usr/bin/python3
 """Module task_04_flask"""
 from flask import Flask, jsonify, request
-import json
 
 
 app = Flask(__name__)
@@ -27,9 +26,8 @@ def status():
 
 @app.route("/users/<username>")
 def get_user(username):
-    user = users.get(username)
-    if user:
-        return jsonify(user)
+    if username in users:
+        return jsonify(users[username])
     else:
         return jsonify({"error": "User not found"}), 404
 
@@ -37,11 +35,13 @@ def get_user(username):
 @app.route("/add_user", methods=["POST"])
 def add_user():
     user_data = request.get_json()
-    username = user_data.get("username")
-    if not username:
+    if "username" not in user_data:
         return jsonify({"error": "Username is required"}), 400
 
+    username = user_data["username"]
+
     users[username] = {
+        "username": username,
         "name": user_data.get("name"),
         "age": user_data.get("age"),
         "city": user_data.get("city")
