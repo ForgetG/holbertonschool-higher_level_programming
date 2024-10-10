@@ -3,8 +3,6 @@
 from http.server import BaseHTTPRequestHandler, HTTPServer
 import json
 
-PORT = 8000
-
 
 class SimpleAPIHandler(BaseHTTPRequestHandler):
     """SimpleAPIHandler"""
@@ -29,11 +27,14 @@ class SimpleAPIHandler(BaseHTTPRequestHandler):
             self.wfile.write(b'OK')
 
         else:
-            self.send_error(404, 'Endpoint not found')
+            self.send_response(404)
+            self.send_header('Content-type', 'application/json')
+            self.end_headers()
+            self.wfile.write(b'Endpoint not found')
 
 
 def run(server_class=HTTPServer, handler_class=SimpleAPIHandler, port=8000):
-    server_address = ("", port)
+    server_address = ('', port)
     httpd = server_class(server_address, handler_class)
     print("Serving on port {}...".format(port))
     httpd.serve_forever()
