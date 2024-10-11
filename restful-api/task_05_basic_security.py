@@ -57,31 +57,9 @@ def admin_only():
         return jsonify({"error": "Access forbidden"}), 403
 
 
-revoked_tokens = set()
-
-
-@app.route("/revoke", methods=["POST"])
-@jwt_required()
-def revoke_token():
-    jti = get_jwt()["jti"]
-    revoked_tokens.add(jti)
-    return jsonify(msg="Token has been revoked"), 200
-
-
-@jwt.token_in_blocklist_loader
-def check_if_token_revoked(jwt_header, jwt_payload):
-    jti = jwt_payload["jti"]
-    return jti in revoked_tokens
-
-
 @jwt.unauthorized_loader
 def handle_unauthorized_error(err):
     return jsonify({"error": "Missing or invalid token"}), 401
-
-
-@jwt.invalid_token_loader
-def handle_invalid_signature_error(err):
-    return jsonify({"error": "Token signature is invalid"}), 401
 
 
 @jwt.invalid_token_loader
@@ -95,13 +73,23 @@ def handle_expired_token_error(err):
 
 
 @jwt.revoked_token_loader
-def handle_duplicate_token_error(err):
-    return jsonify({"error": "Token has already been used"}), 401
+def handle_revoked_token_error(err):
+    return jsonify({"error": "Token has been revoked"}), 401
 
 
 @jwt.needs_fresh_token_loader
 def handle_needs_fresh_token_error(err):
     return jsonify({"error": "Fresh token required"}), 401
+
+
+@jwt.invalid_token_loader
+def handle_invalid_signature_error(err):
+    return jsonify({"error": "Token signature is invalid"}), 401
+
+
+@jwt.revoked_token_loader
+def handle_duplicate_token_error(err):
+    return jsonify({"error": "Token has already been used"}), 401
 
 
 if __name__ == "__main__":
