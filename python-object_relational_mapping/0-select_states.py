@@ -7,8 +7,7 @@ Lists all states from the database hbtn_0e_0_usa
 import MySQLdb
 import sys
 
-def main():
-    """Main function that executes the database connection and retrieval of states."""
+if __name__ == "__main__":
     
     username = sys.argv[1]
     password = sys.argv[2]
@@ -24,6 +23,3 @@ def main():
 
     cursor.close()
     db.close()
-
-if __name__ == "__main__":
-    main()
